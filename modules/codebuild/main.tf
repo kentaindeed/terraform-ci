@@ -56,6 +56,9 @@ resource "aws_codebuild_project" "terraform-ci" {
   source_version = "main"
 
   tags = local.common_tags
+  lifecycle {
+    ignore_changes = [tags["CreatedAt"]]
+  }
 }
 
 # codebuild webhook
