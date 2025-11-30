@@ -16,6 +16,7 @@ phases:
     commands:
       - echo "Initializing Terraform"
       - cd env/${env}
+      - echo "After cd, current directory:" && pwd
       - terraform init
   build:
     commands:
