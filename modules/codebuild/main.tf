@@ -43,7 +43,7 @@ resource "aws_codebuild_project" "terraform-ci" {
     git_clone_depth = 1
     buildspec = templatefile("${path.module}/templates/buildspec.yml.tpl", {
       TF_VERSION  = var.TF_VERSION
-      # environment = var.env
+      env = var.env
     })
     
     # private の時のみコメントを外す
