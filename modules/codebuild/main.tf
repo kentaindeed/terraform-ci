@@ -59,6 +59,7 @@ resource "aws_codebuild_project" "terraform-ci" {
 }
 
 # codebuild webhook
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/codebuild_webhook
 resource "aws_codebuild_webhook" "terraform-ci" {
   project_name = aws_codebuild_project.terraform-ci.name
   build_type = "BUILD"
@@ -67,7 +68,7 @@ resource "aws_codebuild_webhook" "terraform-ci" {
   filter_group {
     filter {
       type = "EVENT"
-      pattern = "PUSH"
+      pattern = "PULL_REQUEST_MERGED"
     }
 
     filter {
