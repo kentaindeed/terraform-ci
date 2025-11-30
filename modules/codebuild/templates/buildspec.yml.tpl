@@ -15,6 +15,7 @@ phases:
   pre_build:
     commands:
       - echo "Initializing Terraform"
+      - cd env/${env}
       - terraform init
   build:
     commands:
