@@ -32,7 +32,7 @@ resource "aws_codebuild_project" "terraform-ci" {
   }
   environment {
     compute_type = "BUILD_GENERAL1_SMALL"
-    image = "aws/codebuild/standard:4.0"
+    image = "aws/codebuild/amazonlinux2-x86_64-standard:4.0"
     type = "LINUX_CONTAINER"
     privileged_mode = false
     image_pull_credentials_type = "CODEBUILD"
@@ -41,7 +41,10 @@ resource "aws_codebuild_project" "terraform-ci" {
     type = "GITHUB"
     location = "https://github.com/${var.github_owner}/${var.github_repo}.git"
     git_clone_depth = 1
-    buildspec = "buildspec.yml"
+    buildspec = templatefile("${path.module}/templates/buildspec.yml.tpl", {
+      TF_VERSION  = var.TF_VERSION
+      # environment = var.env
+    })
     
     # private の時のみコメントを外す
     # auth {

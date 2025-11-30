@@ -21,3 +21,8 @@ variable "github_repo" {
   description = "GitHub repository"
   type        = string
 }
+
+variable "TF_VERSION" {
+  description = "Terraform version"
+  type        = string
+}

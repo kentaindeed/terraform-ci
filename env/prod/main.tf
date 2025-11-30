@@ -25,4 +25,5 @@ module "codebuild" {
   aws_region = var.aws_region
   github_owner  = var.github_owner
   github_repo   = var.github_repo
+  TF_VERSION = var.TF_VERSION
 }

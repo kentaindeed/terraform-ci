@@ -18,3 +18,8 @@ variable "github_repo" {
   type        = string
 }
  
+variable "TF_VERSION" {
+  description = "Terraform version"
+  type        = string
+  default     = "1.6.0"
+}
