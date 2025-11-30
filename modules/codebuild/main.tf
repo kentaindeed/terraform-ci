@@ -58,4 +58,23 @@ resource "aws_codebuild_project" "terraform-ci" {
   tags = local.common_tags
 }
 
+# codebuild webhook
+resource "aws_codebuild_webhook" "terraform-ci" {
+  project_name = aws_codebuild_project.terraform-ci.name
+  build_type = "BUILD"
+
+  # terraform のrepo でpush イベントが起こると実行
+  filter_group {
+    filter {
+      type = "EVENT"
+      pattern = "PUSH"
+    }
+
+    filter {
+      type = "HEAD_REF"
+      pattern = "main"
+    }
+  }
+}
+
 
