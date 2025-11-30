@@ -1,15 +1,11 @@
-# variable
-
 variable "aws_region" {
   description = "AWS region"
   type        = string
-  default     = "ap-northeast-1"
 }
 
 variable "env" {
-  description = "Environment"
+  description = "Environment name"
   type        = string
-  default     = "prod"
 }
 
 variable "github_owner" {
@@ -21,3 +17,4 @@ variable "github_repo" {
   description = "GitHub repository"
   type        = string
 }
+ 
